@@ -38,18 +38,16 @@ public class GameBoard {
         }
     }
 
-    public int[][] displayMatrice(int height, int width){
-        if ((height == 12) && (width == 11)){
-            return;
-        }
-        else if (width == 11){
-            height++;
-            return matrice[width][height] + displayMatrice(height, 0) + "\n";
-        }
-        else {
-            return matrice[width][height] + displayMatrice(height, width + 1);
+    public void displayMatrice() {
+        for (int y = 0; y < this.height; y++) {
+            for (int x = 0; x < this.width; x++) {
+                System.out.print(this.matrice[x][y] + " | ");
+            }
+            System.out.println();
         }
     }
+
+
 
     public int getWidth() {
         return width;
