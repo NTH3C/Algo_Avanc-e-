@@ -1,5 +1,10 @@
 public class Main {
     public static void main(String[] args) {
-        GameBoard map = new GameBoard();
+        int width = 12;
+        int height = 13;
+        int[][] loadingMap = new int[width][height];
+        GameBoard map = new GameBoard(loadingMap, width, height);
+        map.matriceGenerator();
+        map.displayMatrice();
     }
 }
