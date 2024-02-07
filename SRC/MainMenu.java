@@ -28,7 +28,12 @@ public class MainMenu {
             int response = scanner.nextInt();
                     switch (response){
                         case 1:
-                            break;
+                            int width = 12;
+                            int height = 13;
+                            int[][] loadingMap = new int[width][height];
+                            GameBoard map = new GameBoard(loadingMap, width, height);
+                            map.matriceGenerator();
+                            map.displayMatrice();
                         case 2:
                             break;
                         case 3:
