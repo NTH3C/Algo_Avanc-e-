@@ -1,5 +1,8 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 public class GameSystem {
 
@@ -211,6 +214,16 @@ public class GameSystem {
         }
     }
 
+    public static void saveScores (String file){
+        try (PrintWriter writer = new PrintWriter(new File(file))) {
+            for (int i = 0; i < Main.pseudos.length; i++) {
+                writer.println(Main.pseudos[i] + "," + Main.scores[i]);
+            }
+            System.out.println("Scores saved to " + file);
+        }catch (FileNotFoundException e){
+            System.err.println("Error saving scores to file: " + e.getMessage());
+        }
+    }
 
 }
 
