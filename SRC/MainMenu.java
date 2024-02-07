@@ -28,12 +28,15 @@ public class MainMenu {
             int response = scanner.nextInt();
                     switch (response){
                         case 1:
+                            Main.isgame = true;
                             int width = 13;
                             int height = 12;
+                            byte Player = GameSystem.randomStart();
                             int[][] loadingMap = new int[width][height];
                             GameBoard map = new GameBoard(loadingMap, width, height);
                             map.matriceGenerator();
-                            map.displayMatrice();
+                            map.mouvment(Player);
+
                         case 2:
                             break;
                         case 3:
