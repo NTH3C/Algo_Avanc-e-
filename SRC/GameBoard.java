@@ -34,13 +34,13 @@ public class GameBoard {
                     this.matrice[x][y] = 1;
                 }
                 else if((y == 5) && (x == 6)){
-                    Main.y1 = y;
-                    Main.x1 = x;
+                    Main.column1 = y;
+                    Main.line1 = x;
                     this.matrice[x][y] = 3;
                 }
                 else if((y == 6) && (x == 6)){
-                    Main.y2 = y;
-                    Main.x2 = x;
+                    Main.column2 = y;
+                    Main.line2 = x;
                     this.matrice[x][y] = 4;
                 }
                 else
@@ -58,61 +58,76 @@ public class GameBoard {
     public void displayMatrice() {
         for (int y = 0; y < this.height; y++) {
             for (int x = 0; x < this.width; x++) {
-                System.out.print(this.matrice[x][y] + " | ");
+                System.out.print(this.matrice[x][y] + " ║ ");
             }
             System.out.println();
         }
     }
 
-    /*
-    *
-    * */
+    /**
+     *
+     * @param Player
+     *this function allow the player to move when the game is started
+     *
+     * x1 == player one width
+     * y1 == player one height
+     * x2 == player two width
+     * y2 == player two height
+     * isgame == is the game started // if false == victory condition
+     *
+     * matrice is the game board
+     */
     public void mouvment(byte Player) {
+
 
         while (Main.isgame) {
             displayMatrice();
             if (Player == 1) {
-                if ((matrice[Main.y2 - 1][Main.x2] == 0) || (matrice[Main.y2][Main.x2 - 1] == 0) ||
-                        (matrice[Main.y2][Main.x2 + 1] == 0) || (matrice[Main.y2 + 1][Main.x2] == 0)) {
-                    Scanner scanner = new Scanner(System.in);
+                if ((matrice[Main.column2 - 1][Main.line2] == 0) || (matrice[Main.column2][Main.line2 - 1] == 0) ||
+                        (matrice[Main.column2][Main.line2 + 1] == 0) || (matrice[Main.column2 + 1][Main.line2] == 0)) {
+                    Scanner scanner = new Scanner(System.in);  // player move input
                     try {
                         String response = scanner.next();
                         switch (response) {
-                            case "z":
-                                if (matrice[Main.y2 - 1][Main.x2] == 0) {
-                                    matrice[Main.y2][Main.x2] = 0;
-                                    Main.y2--;
-                                    matrice[Main.y2][Main.x2] = 4;
-                                    Player = 0;
-                                } else {
-                                    System.out.println("This case is used or explosed");
-                                }
-                                break;
-                            case "s":
-                                if (matrice[Main.y2 + 1][Main.x2] == 0) {
-                                    matrice[Main.y2][Main.x2] = 0;
-                                    Main.y2++;
-                                    matrice[Main.y2][Main.x2] = 4;
-                                    Player = 0;
-                                } else {
-                                    System.out.println("This case is used or explosed");
-                                }
-                                break;
                             case "q":
-                                if (matrice[Main.y2][Main.x2 - 1] == 0) {
-                                    matrice[Main.y2][Main.x2] = 0;
-                                    Main.x2--;
-                                    matrice[Main.y2][Main.x2] = 4;
+                                // Move player 2 up by pressing z
+                                if (matrice[Main.column2 - 1][Main.line2] == 0) {
+                                    matrice[Main.column2][Main.line2] = 0;
+                                    Main.column2--;
+                                    matrice[Main.column2][Main.line2] = 4;
                                     Player = 0;
                                 } else {
                                     System.out.println("This case is used or explosed");
                                 }
                                 break;
                             case "d":
-                                if (matrice[Main.y2][Main.x2 + 1] == 0) {
-                                    matrice[Main.y2][Main.x2] = 0;
-                                    Main.x2++;
-                                    matrice[Main.y2][Main.x2] = 4;
+                                // Move player 2 down by pressing s
+                                if (matrice[Main.column2 + 1][Main.line2] == 0) {
+                                    matrice[Main.column2][Main.line2] = 0;
+                                    Main.column2++;
+                                    matrice[Main.column2][Main.line2] = 4;
+                                    Player = 0;
+                                } else {
+                                    System.out.println("This case is used or explosed");
+                                }
+                                break;
+                            case "z":
+                                // Move player 2 left by pressing q
+                                if (matrice[Main.column2][Main.line2 - 1] == 0) {
+                                    matrice[Main.column2][Main.line2] = 0;
+                                    Main.line2--;
+                                    matrice[Main.column2][Main.line2] = 4;
+                                    Player = 0;
+                                } else {
+                                    System.out.println("This case is used or explosed");
+                                }
+                                break;
+                            case "s":
+                                // Move player 2 right by pressing d
+                                if (matrice[Main.column2][Main.line2 + 1] == 0) {
+                                    matrice[Main.column2][Main.line2] = 0;
+                                    Main.line2++;
+                                    matrice[Main.column2][Main.line2] = 4;
                                     Player = 0;
                                 } else {
                                     System.out.println("This case is used or explosed");
@@ -132,47 +147,51 @@ public class GameBoard {
             }
 
             else if (Player == 0) {
-                if ((matrice[Main.y1 - 1][Main.x1] == 0) || (matrice[Main.y1][Main.x1 - 1] == 0) ||
-                        (matrice[Main.y1][Main.x1 + 1] == 0) || (matrice[Main.y1 + 1][Main.x1] == 0)) {
+                if ((matrice[Main.column1 - 1][Main.line1] == 0) || (matrice[Main.column1][Main.line1 - 1] == 0) ||
+                        (matrice[Main.column1][Main.line1 + 1] == 0) || (matrice[Main.column1 + 1][Main.line1] == 0)) {
                     Scanner scanner = new Scanner(System.in);
                     try {
                         String response = scanner.next();
                         switch (response) {
                             case "z":
-                                if (matrice[Main.y1 - 1][Main.x1] == 0) {
-                                    matrice[Main.y1][Main.x1] = 0;
-                                    Main.y1--;
-                                    matrice[Main.y1][Main.x1] = 3;
+                                // Move player 2 up by pressing z
+                                if (matrice[Main.line1][Main.column1 - 1] == 0) {
+                                    matrice[Main.line1][Main.column1] = 0;
+                                    Main.column1--;
+                                    matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
                                 } else {
                                     System.out.println("This case is used or explosed");
                                 }
                                 break;
                             case "s":
-                                if (matrice[Main.y1 + 1][Main.x1] == 0) {
-                                    matrice[Main.y1][Main.x1] = 0;
-                                    Main.y1++;
-                                    matrice[Main.y1][Main.x1] = 3;
+                                // Move player 2 down by pressing s
+                                if (matrice[Main.line1][Main.column1 + 1] == 0) {
+                                    matrice[Main.line1][Main.column1] = 0;
+                                    Main.column1++;
+                                    matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
                                 } else {
                                     System.out.println("This case is used or explosed");
                                 }
                                 break;
                             case "q":
-                                if (matrice[Main.y1][Main.x1 - 1] == 0) {
-                                    matrice[Main.y1][Main.x1] = 0;
-                                    Main.x1--;
-                                    matrice[Main.y1][Main.x1] = 3;
+                                // Move player 2 left by pressing q
+                                if (matrice[Main.line1 - 1][Main.column1] == 0) {
+                                    matrice[Main.line1][Main.column1] = 0;
+                                    Main.line1--;
+                                    matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
                                 } else {
                                     System.out.println("This case is used or explosed");
                                 }
                                 break;
                             case "d":
-                                if (matrice[Main.y1][Main.x1 + 1] == 0) {
-                                    matrice[Main.y1][Main.x1] = 0;
-                                    Main.x1++;
-                                    matrice[Main.y1][Main.x1] = 3;
+                                // Move player 2 right by pressing d
+                                if (matrice[Main.line1+ 1][Main.column1] == 0) {
+                                    matrice[Main.line1][Main.column1] = 0;
+                                    Main.line1++;
+                                    matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
                                 } else {
                                     System.out.println("This case is used or explosed");
