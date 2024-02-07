@@ -1,7 +1,6 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
+
 public class GameSystem {
 
     /**
@@ -128,7 +127,12 @@ public class GameSystem {
         return newArray;
     }
 
-
+    /**
+     * Print Scores to the user then ask user to do an input
+     * If 1 is press return ton main menu
+     * If 2 is press sort scores from worst to best
+     * If 3 is press sort scores from best to worst
+     */
     public static void printPseudosAndScores() {
         // Print the pseudos and scores
         for (int i = 0; i < Main.pseudos.length; i++) {
@@ -152,10 +156,12 @@ public class GameSystem {
                     MainMenu.displayMainMenu();
                     break;
                 case 2:
-                    MainMenu.displayMainMenu();
+                    sortScores(true);
+                    printPseudosAndScores();
                     break;
                 case 3:
-                    MainMenu.displayMainMenu();
+                    sortScores(false);
+                    printPseudosAndScores();
                     break;
                 default:
                     System.out.println("Enter a VALID number!!!");
@@ -168,7 +174,44 @@ public class GameSystem {
         }
     }
 
-}
+    /**
+     * Order scores from worst to best or best to worst according to user's input
+     * @param orderBy if true sort from worst to best, if false do the opposite
+     */
+    public static void sortScores(boolean orderBy){
+        int j;
+        if(orderBy) {
+            for (int i = 0; i < Main.scores.length; i++) {
+                int tempScores = Main.scores[i];
+                String tempPseudos = Main.pseudos[i];
+                j = i;
 
+                while ((j > 0) && (Main.scores[j - 1] > tempScores)) {
+                    Main.scores[j] = Main.scores[j - 1];
+                    Main.pseudos[j] = Main.pseudos[j - 1];
+                    j = j - 1;
+                }
+                Main.scores[j] = tempScores;
+                Main.pseudos[j] = tempPseudos;
+            }
+        }else{
+            for (int i = 0; i < Main.scores.length; i++) {
+                int tempScores = Main.scores[i];
+                String tempPseudos = Main.pseudos[i];
+                j = i;
+
+                while ((j > 0) && (Main.scores[j - 1] < tempScores)) {
+                    Main.scores[j] = Main.scores[j - 1];
+                    Main.pseudos[j] = Main.pseudos[j - 1];
+                    j = j - 1;
+                }
+                Main.scores[j] = tempScores;
+                Main.pseudos[j] = tempPseudos;
+            }
+        }
+    }
+
+
+}
 
 
