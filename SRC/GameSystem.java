@@ -1,8 +1,6 @@
+import java.io.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 
 public class GameSystem {
 
@@ -223,6 +221,17 @@ public class GameSystem {
         }catch (FileNotFoundException e){
             System.err.println("Error saving scores to file: " + e.getMessage());
         }
+    }
+
+    public static void loadScores(String file) throws FileNotFoundException {
+        InputStream is = new FileInputStream(file);
+        InputStreamReader isr = new InputStreamReader(is);
+        BufferedReader buffer = new BufferedReader(isr);
+
+        String line = buffer.readLine();
+            while (line != ""){
+
+            }
     }
 
 }
