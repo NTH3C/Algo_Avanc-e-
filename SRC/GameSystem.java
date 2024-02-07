@@ -223,17 +223,19 @@ public class GameSystem {
         }
     }
 
-    public static void loadScores(String file) throws FileNotFoundException {
+    public static void loadScores(String file) throws IOException {
         InputStream is = new FileInputStream(file);
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader buffer = new BufferedReader(isr);
 
         String line = buffer.readLine();
-            while (line != ""){
-
+            while ((line = buffer.readLine()) != null){
+                String[] tempScore = line.split(",");
+                String pseudo = tempScore[0];
+                int score = Integer.parseInt(tempScore[1]);
+                addOrUpdatePseudoScore(Main.pseudos, Main.scores, pseudo, score);
             }
     }
-
 }
 
 
