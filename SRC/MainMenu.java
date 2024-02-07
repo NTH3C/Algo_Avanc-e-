@@ -40,7 +40,9 @@ public class MainMenu {
                             map.mouvment(Player);
 
                         case 2:
-                            break;
+                            GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, "Sllappo", 200);
+                            GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, "Bwalexius", 50);
+                            GameSystem.printPseudosAndScores();
                         case 3:
                             System.out.println(TextColor.ANSI_BLUE+"During his turn, a player can move his pawn one square (vertically or horizontally), then destroy a square on the board.\n" +
                                     "The last player still able to move wins.\n" +
