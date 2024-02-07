@@ -56,13 +56,58 @@ public class GameBoard {
      * Display the map with border
      */
     public void displayMatrice() {
-        for (int y = 0; y < this.height; y++) {
-            for (int x = 0; x < this.width; x++) {
-                System.out.print(this.matrice[x][y] + " ║ ");
-            }
-            System.out.println();
+        // Print column numbers outside the frame
+        System.out.print("    ");
+        for (int x = 0; x < this.width; x++) {
+            if (x < 10)
+                System.out.print(" " + x + "  ");
+            else
+                System.out.print(" " + x + " ");
         }
+        System.out.println();
+
+        for (int y = 0; y < this.height; y++) {
+            // Print the top border of the row
+            System.out.print("   ");
+            for (int x = 0; x < this.width; x++) {
+                System.out.print("╔═══");
+            }
+            System.out.println("╗");
+
+            // Print the line number
+            if (y < 10)
+                System.out.print(" " + y + " ");
+            else
+                System.out.print(y + " ");
+
+            for (int x = 0; x < this.width; x++) {
+                // Print the left border of the cell
+                System.out.print("║ " + this.matrice[x][y] + " ");
+            }
+            // Print the right border of the last cell
+            System.out.println("║");
+
+            // Print the middle separator if not the last row
+            if (y != this.height - 1) {
+                System.out.print("   ");
+                for (int x = 0; x < this.width; x++) {
+                    System.out.print("╠═══");
+                }
+                System.out.println("╣");
+            }
+        }
+
+        // Print the bottom border of the matrix
+        System.out.print("   ");
+        for (int x = 0; x < this.width; x++) {
+            System.out.print("╚═══");
+        }
+        System.out.println("╝");
     }
+
+
+
+
 
     /**
      *
@@ -137,6 +182,7 @@ public class GameBoard {
                                 System.out.println("Not this time Clément...");
                                 break;
                         }
+                        destroy();
                     } catch (InputMismatchException e) {
                         System.out.println("Enter a VALID character !");
                     }
@@ -201,6 +247,7 @@ public class GameBoard {
                                 System.out.println("Not this time Clément...");
                                 break;
                         }
+                        destroy();
                     } catch (InputMismatchException e) {
                         System.out.println("Enter a VALID character !");
                     }
@@ -210,7 +257,30 @@ public class GameBoard {
                 }
             }
         }
+    }
 
+    /**
+     * read user's inputs and destroy the associate case
+     */
+    public void destroy(){
+        Scanner scannerDestroy = new Scanner(System.in);
+        try {
+            System.out.println("Enter the column you want to aim at :");
+            int column = scannerDestroy.nextInt();
+            if ((column >= 1) && (column <= 12)) {
+                try {
+                    System.out.println("Enter the line you want to aim at :");
+                    int line = scannerDestroy.nextInt();
+                    if ((line >= 1) && (line <= 11) && (matrice[column][line] == 0)) {
+                        matrice[column][line] = 1;
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Enter a VALID character !");
+                }
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Enter a VALID number !");
+        }
     }
 
 
@@ -239,3 +309,6 @@ public class GameBoard {
     }
 
 }
+
+
+
