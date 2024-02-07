@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class GameSystem {
 
     /**
@@ -28,4 +30,17 @@ public class GameSystem {
         }
     }
 
+    public static String choosePseudo() {
+        System.out.println("Choose a pseudo between 2 and 10 character");
+        Scanner scannerpseudo = new Scanner(System.in); //Pseudo input
+        String pseudo = scannerpseudo.next();
+        if ((pseudo.length() <= 10) && (pseudo.length() >= 2)) {
+            return pseudo;
+        } else {
+            System.out.println("Do it the right way Please");
+            return choosePseudo();
+        }
+    }
 }
+
+

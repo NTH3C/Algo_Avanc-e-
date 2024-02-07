@@ -131,7 +131,7 @@ public class GameBoard {
                 if ((GameSystem.winPlayer1()) && (GameSystem.winPlayer2())) {
                     Scanner scanner = new Scanner(System.in);  // player move input
                     try {
-                        System.out.println("Player 2's Turn");
+                        System.out.println(Main.pseudo2 + "'s Turn");
                         String response = scanner.next();
                         switch (response) {
                             case "q":
@@ -199,7 +199,7 @@ public class GameBoard {
                 if ((GameSystem.winPlayer1()) && (GameSystem.winPlayer2())) {
                     Scanner scanner = new Scanner(System.in);
                     try {
-                        System.out.println("Player 1's Turn");
+                        System.out.println(Main.pseudo2 + "'s Turn");
                         String response = scanner.next();
                         switch (response) {
                             case "z":

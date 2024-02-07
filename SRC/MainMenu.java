@@ -28,6 +28,8 @@ public class MainMenu {
             int response = scanner.nextInt();
                     switch (response){
                         case 1:
+                            Main.pseudo1 = GameSystem.choosePseudo();
+                            Main.pseudo2 = GameSystem.choosePseudo();
                             Main.isgame = true;
                             int width = 13;
                             int height = 12;
