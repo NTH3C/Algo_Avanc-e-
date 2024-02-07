@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 public class Main {
     static int line1;  // Player 1 width
     static int column1;  // Player 1 height
@@ -6,8 +9,13 @@ public class Main {
     static boolean isgame;  // is true while playing
     static String pseudo1;
     static String pseudo2;
-    public static void main(String[] args) {
+    static String[] pseudos = new String[0];
 
+    static int[] scores = new int[0];
+    static  boolean existingPseudo = true;
+
+    public static void main(String[] args) throws IOException {
+        GameSystem.loadScores("score.txt");
         MainMenu.displayMainMenu();
 
     }
