@@ -40,13 +40,13 @@ public class MainMenu {
                             map.mouvment(Player);
 
                         case 2:
-                            GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, "Sllappo", 200);
+                            /*GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, "Sllappo", 200);
                             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, "Bwalexius", -22);
                             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, "Kramptax", 56);
                             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, "Noroi", -1);
                             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, "Astolfo", 34);
 
-                            GameSystem.saveScores("score.txt");
+                            GameSystem.saveScores("score.txt");*/
                             GameSystem.printPseudosAndScores();
 
                             break;

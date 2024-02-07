@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 public class Main {
@@ -13,8 +14,8 @@ public class Main {
     static int[] scores = new int[0];
     static  boolean existingPseudo = true;
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+        GameSystem.loadScores("score.txt");
         MainMenu.displayMainMenu();
 
     }
