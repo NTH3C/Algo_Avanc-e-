@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,8 @@ public class GameSystem {
         }
        else {
             System.out.println("Player 1 win");
+            GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo1, 5);
+            GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo2, -2);
             return false;
         }
     }
@@ -27,6 +30,8 @@ public class GameSystem {
             return true;
         }else {
             System.out.println("Player 2 win");
+            GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo2, 5);
+            GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo1, -2);
             return false;
         }
     }
@@ -55,16 +60,16 @@ public class GameSystem {
     public static void addOrUpdatePseudoScore(String[] pseudos, int[] scores, String pseudo, int score) {
         int existingIndex = searchPseudoIndex(pseudos, pseudo);
 
-        if (existingIndex != -1) {
+        if (Main.existingPseudo) {
             // Pseudo already exists update the score
             scores[existingIndex] += score;
         } else {
             // does not exist add a new pseudo
             int newIndex = pseudos.length; // New index for the pseudo
-            pseudos = resizeArrayStr(pseudos, newIndex + 1);
-            scores = resizeArrayInt(scores, newIndex + 1);
-            pseudos[newIndex] = pseudo;
-            scores[newIndex] = score;
+            Main.pseudos = resizeArrayStr(pseudos, newIndex + 1);
+            Main.scores = resizeArrayInt(scores, newIndex + 1);
+            Main.pseudos[newIndex] = pseudo;
+            Main.scores[newIndex] = score;
         }
     }
 
@@ -78,9 +83,11 @@ public class GameSystem {
     public static int searchPseudoIndex(String[] pseudos, String targetPseudo) {
         for (int i = 0; i < pseudos.length; i++) {
             if (pseudos[i].equals(targetPseudo)) {
+                Main.existingPseudo = true;
                 return i;
             }
         }
+        Main.existingPseudo = false;
         return -1;
     }
 
@@ -126,6 +133,38 @@ public class GameSystem {
         // Print the pseudos and scores
         for (int i = 0; i < Main.pseudos.length; i++) {
             System.out.println("Pseudo: " + Main.pseudos[i] + ", Score: " + Main.scores[i]);
+        }
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.println(TextColor.ANSI_GREEN +" ______________________________\n" +
+                    "|  __________________________  |\n" +
+                    "| |"+TextColor.ANSI_RESET +TextColor.ANSI_BLUE+" Choose an option:        "+TextColor.ANSI_RESET+ TextColor.ANSI_GREEN +"| |\n"+
+                    "| |                          | |\n" +
+                    "| |"+TextColor.ANSI_RESET +TextColor.ANSI_BLUE+" 1-Return to menu         "+TextColor.ANSI_RESET+TextColor.ANSI_GREEN + "| |\n"+
+                    "| |"+TextColor.ANSI_RESET +TextColor.ANSI_BLUE+" 2-Sort from worst to best"+TextColor.ANSI_RESET+TextColor.ANSI_GREEN + "| |\n"+
+                    "| |"+TextColor.ANSI_RESET +TextColor.ANSI_BLUE+" 3-Sort from best to worst"+TextColor.ANSI_RESET+TextColor.ANSI_GREEN + "| |\n"+
+                    "| |                          | |\n"+
+                    "| |__________________________| |\n"+
+                    "|______________________________|"+TextColor.ANSI_RESET);
+            int response = scanner.nextInt();
+            switch (response){
+                case 1:
+                    MainMenu.displayMainMenu();
+                    break;
+                case 2:
+                    MainMenu.displayMainMenu();
+                    break;
+                case 3:
+                    MainMenu.displayMainMenu();
+                    break;
+                default:
+                    System.out.println("Enter a VALID number!!!");
+                    printPseudosAndScores();
+                    break;
+            }
+        }catch (InputMismatchException e){
+            System.out.println("Enter a VALID number!!!");
+            printPseudosAndScores();
         }
     }
 

@@ -9,7 +9,9 @@ public class Main {
     static String pseudo1;
     static String pseudo2;
     static String[] pseudos = new String[0];
+
     static int[] scores = new int[0];
+    static  boolean existingPseudo = true;
 
     public static void main(String[] args) {
 
