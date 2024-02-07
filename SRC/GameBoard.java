@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class GameBoard {
 
-    int[][] matrice;
+    static int[][] matrice;
     int width;
     int height;
 
@@ -128,10 +128,10 @@ public class GameBoard {
         while (Main.isgame) {
             displayMatrice();
             if (Player == 1) {
-                if ((matrice[Main.column2 - 1][Main.line2] == 0) || (matrice[Main.column2][Main.line2 - 1] == 0) ||
-                        (matrice[Main.column2][Main.line2 + 1] == 0) || (matrice[Main.column2 + 1][Main.line2] == 0)) {
+                if ((GameSystem.winPlayer1()) && (GameSystem.winPlayer2())) {
                     Scanner scanner = new Scanner(System.in);  // player move input
                     try {
+                        System.out.println("Player 2's Turn");
                         String response = scanner.next();
                         switch (response) {
                             case "q":
@@ -141,6 +141,7 @@ public class GameBoard {
                                     Main.column2--;
                                     matrice[Main.column2][Main.line2] = 4;
                                     Player = 0;
+                                    destroy();
                                 } else {
                                     System.out.println("This case is used or explosed");
                                 }
@@ -152,6 +153,7 @@ public class GameBoard {
                                     Main.column2++;
                                     matrice[Main.column2][Main.line2] = 4;
                                     Player = 0;
+                                    destroy();
                                 } else {
                                     System.out.println("This case is used or explosed");
                                 }
@@ -163,6 +165,7 @@ public class GameBoard {
                                     Main.line2--;
                                     matrice[Main.column2][Main.line2] = 4;
                                     Player = 0;
+                                    destroy();
                                 } else {
                                     System.out.println("This case is used or explosed");
                                 }
@@ -174,6 +177,7 @@ public class GameBoard {
                                     Main.line2++;
                                     matrice[Main.column2][Main.line2] = 4;
                                     Player = 0;
+                                    destroy();
                                 } else {
                                     System.out.println("This case is used or explosed");
                                 }
@@ -182,21 +186,20 @@ public class GameBoard {
                                 System.out.println("Not this time Clément...");
                                 break;
                         }
-                        destroy();
+
                     } catch (InputMismatchException e) {
                         System.out.println("Enter a VALID character !");
                     }
-                } else {
-                    System.out.println("Player 1 win");
-                    Main.isgame = false;
+                }else {
+                    Main.isgame=false;
                 }
             }
 
             else if (Player == 0) {
-                if ((matrice[Main.column1 - 1][Main.line1] == 0) || (matrice[Main.column1][Main.line1 - 1] == 0) ||
-                        (matrice[Main.column1][Main.line1 + 1] == 0) || (matrice[Main.column1 + 1][Main.line1] == 0)) {
+                if ((GameSystem.winPlayer1()) && (GameSystem.winPlayer2())) {
                     Scanner scanner = new Scanner(System.in);
                     try {
+                        System.out.println("Player 1's Turn");
                         String response = scanner.next();
                         switch (response) {
                             case "z":
@@ -206,6 +209,7 @@ public class GameBoard {
                                     Main.column1--;
                                     matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
+                                    destroy();
                                 } else {
                                     System.out.println("This case is used or explosed");
                                 }
@@ -217,6 +221,7 @@ public class GameBoard {
                                     Main.column1++;
                                     matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
+                                    destroy();
                                 } else {
                                     System.out.println("This case is used or explosed");
                                 }
@@ -228,6 +233,7 @@ public class GameBoard {
                                     Main.line1--;
                                     matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
+                                    destroy();
                                 } else {
                                     System.out.println("This case is used or explosed");
                                 }
@@ -239,6 +245,7 @@ public class GameBoard {
                                     Main.line1++;
                                     matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
+                                    destroy();
                                 } else {
                                     System.out.println("This case is used or explosed");
                                 }
@@ -247,13 +254,11 @@ public class GameBoard {
                                 System.out.println("Not this time Clément...");
                                 break;
                         }
-                        destroy();
                     } catch (InputMismatchException e) {
                         System.out.println("Enter a VALID character !");
                     }
-                } else {
-                    System.out.println("Player 2 win");
-                    Main.isgame = false;
+                }else {
+                    Main.isgame=false;
                 }
             }
         }
@@ -273,13 +278,20 @@ public class GameBoard {
                     int line = scannerDestroy.nextInt();
                     if ((line >= 1) && (line <= 11) && (matrice[column][line] == 0)) {
                         matrice[column][line] = 1;
-                    }
+                    }else {
+                        System.out.println("Not this time clément");
+                        destroy();}
                 } catch (InputMismatchException e) {
-                    System.out.println("Enter a VALID character !");
+                    System.out.println("Not this time clément");
+                    destroy();
                 }
+            }else {
+                System.out.println("Not this time clément");
+                destroy();
             }
         } catch (InputMismatchException e) {
-            System.out.println("Enter a VALID number !");
+            System.out.println("Not this time clément");
+            destroy();
         }
     }
 
