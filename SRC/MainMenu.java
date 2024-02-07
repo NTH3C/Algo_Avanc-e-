@@ -46,9 +46,9 @@ public class MainMenu {
                             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, "Noroi", -1);
                             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, "Astolfo", 34);
 
+                            GameSystem.saveScores("score.txt");
                             GameSystem.printPseudosAndScores();
 
-                            GameSystem.saveScores("score.txt");
                             break;
                         case 3:
                             System.out.println(TextColor.ANSI_BLUE+"During his turn, a player can move his pawn one square (vertically or horizontally), then destroy a square on the board.\n" +
