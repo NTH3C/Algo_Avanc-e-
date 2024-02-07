@@ -30,10 +30,10 @@ public class GameBoard {
                 else if ((x == 0) || (x == this.width-1)){
                     this.matrice[x][y] = 1;
                 }
-                else if((y == 5) && (x == 5)){
+                else if((y == 5) && (x == 6)){
                     this.matrice[x][y] = 3;
                 }
-                else if((y == 7) && (x == 5)){
+                else if((y == 6) && (x == 6)){
                     this.matrice[x][y] = 4;
                 }
                 else

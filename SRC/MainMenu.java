@@ -28,8 +28,8 @@ public class MainMenu {
             int response = scanner.nextInt();
                     switch (response){
                         case 1:
-                            int width = 12;
-                            int height = 13;
+                            int width = 13;
+                            int height = 12;
                             int[][] loadingMap = new int[width][height];
                             GameBoard map = new GameBoard(loadingMap, width, height);
                             map.matriceGenerator();
