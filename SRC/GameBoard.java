@@ -44,6 +44,9 @@ public class GameBoard {
         }
     }
 
+    /**
+     * Display the map with border
+     */
     public void displayMatrice() {
         for (int y = 0; y < this.height; y++) {
             for (int x = 0; x < this.width; x++) {
