@@ -51,7 +51,6 @@ public class MainMenu {
 
                             break;
                         case 3:
-                            AudioPlayer.playAudio("sound/ennemydefeated.wav");
 
                             System.out.println(TextColor.ANSI_BLUE+"During his turn, a player can move his pawn one square (vertically or horizontally), then destroy a square on the board.\n" +
                                     "The last player still able to move wins.\n" +
@@ -59,12 +58,15 @@ public class MainMenu {
                                     "- A player cannot destroy an occupied square.\n" +
                                     "- A player cannot occupy a destroyed square or an already-occupied square.\n" +
                                     "- A player blocked during a turn is declared the loser."+TextColor.ANSI_RESET);
+                            AudioPlayer.playAudio("sound/ennemydefeated.wav");
                             try {
                                 //delay the display of the menu
-                                Thread.sleep(8000);
+                                Thread.sleep(7000);
+
                             }catch (InterruptedException e){
                                 break;
                             }
+
                             displayMainMenu();
                             break;
                         case 4:

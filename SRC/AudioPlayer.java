@@ -9,7 +9,7 @@ public class AudioPlayer {
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
-            Thread.sleep(clip.getMicrosecondLength() / 1000);
+            Thread.sleep(clip.getMicrosecondLength() / 10);
             clip.close();
         } catch (Exception e) {
             e.printStackTrace();
