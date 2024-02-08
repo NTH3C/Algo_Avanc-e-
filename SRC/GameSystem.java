@@ -23,6 +23,7 @@ public class GameSystem {
         }
        else {
             System.out.println("Player 1 win");
+            AudioPlayer.playAudio("sound/Player_one_win.wav");
             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo1, 5);
             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo2, -2);
             return false;
@@ -38,6 +39,7 @@ public class GameSystem {
             return true;
         }else {
             System.out.println("Player 2 win");
+            AudioPlayer.playAudio("sound/Player_two_win.wav");
             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo2, 5);
             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo1, -2);
             return false;

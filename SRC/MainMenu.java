@@ -59,7 +59,7 @@ public class MainMenu {
                                     "- A player cannot occupy a destroyed square or an already-occupied square.\n" +
                                     "- A player blocked during a turn is declared the loser."+TextColor.ANSI_RESET);
                             try {
-                                AudioPlayer.playAudio("sound/cover.wav");
+                                AudioPlayer.playAudio("sound/collision.wav");
                                 // Attendre que la lecture audio se termine
                                 Thread.sleep(7000);
                                 // Afficher le menu principal après le délai

@@ -138,9 +138,11 @@ public class GameBoard {
                                     Main.column2--;
                                     matrice[Main.column2][Main.line2] = 4;
                                     Player = 0;
+                                    AudioPlayer.playAudio("sound/move.wav");
                                     destroy(Main.pseudo1);
                                 } else {
                                     System.out.println("This case is used or explosed");
+                                    AudioPlayer.playAudio("sound/collision.wav");
                                 }
                                 break;
                             case "d":
@@ -150,9 +152,11 @@ public class GameBoard {
                                     Main.column2++;
                                     matrice[Main.column2][Main.line2] = 4;
                                     Player = 0;
+                                    AudioPlayer.playAudio("sound/move.wav");
                                     destroy(Main.pseudo1);
                                 } else {
                                     System.out.println("This case is used or explosed");
+                                    AudioPlayer.playAudio("sound/collision.wav");
                                 }
                                 break;
                             case "z":
@@ -162,9 +166,11 @@ public class GameBoard {
                                     Main.line2--;
                                     matrice[Main.column2][Main.line2] = 4;
                                     Player = 0;
+                                    AudioPlayer.playAudio("sound/move.wav");
                                     destroy(Main.pseudo1);
                                 } else {
                                     System.out.println("This case is used or explosed");
+                                    AudioPlayer.playAudio("sound/collision.wav");
                                 }
                                 break;
                             case "s":
@@ -174,13 +180,16 @@ public class GameBoard {
                                     Main.line2++;
                                     matrice[Main.column2][Main.line2] = 4;
                                     Player = 0;
+                                    AudioPlayer.playAudio("sound/move.wav");
                                     destroy(Main.pseudo1);
                                 } else {
                                     System.out.println("This case is used or explosed");
+                                    AudioPlayer.playAudio("sound/collision.wav");
                                 }
                                 break;
                             default:
                                 System.out.println("Not this time Clément...");
+                                AudioPlayer.playAudio("sound/error.wav");
                                 break;
                         }
 
@@ -211,9 +220,11 @@ public class GameBoard {
                                     Main.column1--;
                                     matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
+                                    AudioPlayer.playAudio("sound/move.wav");
                                     destroy(Main.pseudo2);
                                 } else {
                                     System.out.println("This case is used or explosed");
+                                    AudioPlayer.playAudio("sound/collision.wav");
                                 }
                                 break;
                             case "s":
@@ -223,9 +234,11 @@ public class GameBoard {
                                     Main.column1++;
                                     matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
+                                    AudioPlayer.playAudio("sound/move.wav");
                                     destroy(Main.pseudo2);
                                 } else {
                                     System.out.println("This case is used or explosed");
+                                    AudioPlayer.playAudio("sound/collision.wav");
                                 }
                                 break;
                             case "q":
@@ -235,9 +248,11 @@ public class GameBoard {
                                     Main.line1--;
                                     matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
+                                    AudioPlayer.playAudio("sound/move.wav");
                                     destroy(Main.pseudo2);
                                 } else {
                                     System.out.println("This case is used or explosed");
+                                    AudioPlayer.playAudio("sound/collision.wav");
                                 }
                                 break;
                             case "d":
@@ -247,13 +262,17 @@ public class GameBoard {
                                     Main.line1++;
                                     matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
+                                    AudioPlayer.playAudio("sound/move.wav");
                                     destroy(Main.pseudo2);
                                 } else {
                                     System.out.println("This case is used or explosed");
+                                    AudioPlayer.playAudio("sound/collision.wav");
+
                                 }
                                 break;
                             default:
                                 System.out.println("Not this time Clément...");
+                                AudioPlayer.playAudio("sound/error.wav");
                                 break;
                         }
                     } catch (InputMismatchException e) {
@@ -280,24 +299,21 @@ public class GameBoard {
                     int line = scannerDestroy.nextInt();
                     if ((line >= 1) && (line <= 11) && (matrice[column][line] == 0)) {
                         matrice[column][line] = 1;}
-                        if (Objects.equals(pseudo, "trump")) {
-                            // If the player is "trump", attack three points on the line
-                            for (int i = 0; i < 3; i++) {
-                                matrice[column][line +i] = 1;}
-                    }else {
-                        System.out.println("Not this time clément");
-                        destroy(pseudo);}
+                    AudioPlayer.playAudio("sound/explosion.wav");
                 } catch (InputMismatchException e) {
                     System.out.println("Not this time clément");
                     destroy(pseudo);
+                    AudioPlayer.playAudio("sound/error.wav");
                 }
             }else {
                 System.out.println("Not this time clément");
                 destroy(pseudo);
+                AudioPlayer.playAudio("sound/error.wav");
             }
         } catch (InputMismatchException e) {
             System.out.println("Not this time clément");
             destroy(pseudo);
+            AudioPlayer.playAudio("sound/error.wav");
         }
     }
 
