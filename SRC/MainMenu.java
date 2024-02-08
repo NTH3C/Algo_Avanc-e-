@@ -51,6 +51,8 @@ public class MainMenu {
 
                             break;
                         case 3:
+                            AudioPlayer.playAudio("sound/ennemydefeated.wav");
+
                             System.out.println(TextColor.ANSI_BLUE+"During his turn, a player can move his pawn one square (vertically or horizontally), then destroy a square on the board.\n" +
                                     "The last player still able to move wins.\n" +
                                     "Constraints :\n" +
