@@ -123,6 +123,11 @@ public class GameBoard {
                     Scanner scanner = new Scanner(System.in);  // player move input
                     try {
                         System.out.println(Main.pseudo2 + "'s Turn");
+                        System.out.println("You are the yellow player");
+                        System.out.println("-z : move to top");
+                        System.out.println("-d : move to right");
+                        System.out.println("-s : move to down");
+                        System.out.println("-q : move to left");
                         String response = scanner.next();
                         switch (response) {
                             case "q":
@@ -191,6 +196,11 @@ public class GameBoard {
                     Scanner scanner = new Scanner(System.in);
                     try {
                         System.out.println(Main.pseudo2 + "'s Turn");
+                        System.out.println("You are the blue player");
+                        System.out.println("-z : move to top");
+                        System.out.println("-d : move to right");
+                        System.out.println("-s : move to down");
+                        System.out.println("-q : move to left");
                         String response = scanner.next();
                         switch (response) {
                             case "z":
