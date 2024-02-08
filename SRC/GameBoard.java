@@ -54,58 +54,49 @@ public class GameBoard {
 
     /**
      * Display the map with border
+     *
+     * cellvalue is the value in the matrix
      */
     public void displayMatrice() {
-        // Print column numbers outside the frame
-        System.out.print("    ");
+        // Print column numbers
+        System.out.print("  ");
         for (int x = 0; x < this.width; x++) {
             if (x < 10)
-                System.out.print(" " + x + "  ");
+                System.out.print(x + "|");
             else
-                System.out.print(" " + x + " ");
+                System.out.print(x + "|");
         }
         System.out.println();
 
         for (int y = 0; y < this.height; y++) {
-            // Print the top border of the row
-            System.out.print("   ");
-            for (int x = 0; x < this.width; x++) {
-                System.out.print("╔═══");
-            }
-            System.out.println("╗");
-
-            // Print the line number
+            // Print row number
             if (y < 10)
                 System.out.print(" " + y + " ");
             else
                 System.out.print(y + " ");
 
             for (int x = 0; x < this.width; x++) {
-                // Print the left border of the cell
-                System.out.print("║ " + this.matrice[x][y] + " ");
-            }
-            // Print the right border of the last cell
-            System.out.println("║");
-
-            // Print the middle separator if not the last row
-            if (y != this.height - 1) {
-                System.out.print("   ");
-                for (int x = 0; x < this.width; x++) {
-                    System.out.print("╠═══");
+                int cellValue = this.matrice[x][y];
+                switch (cellValue) {
+                    case 0:
+                        System.out.print("\u001B[47m  \u001B[0m"); // White square
+                        break;
+                    case 1:
+                        System.out.print("\u001B[41m  \u001B[0m"); // Red square
+                        break;
+                    case 3:
+                        System.out.print("\u001B[44m  \u001B[0m"); // Blue square
+                        break;
+                    case 4:
+                        System.out.print("\u001B[43m  \u001B[0m"); // Yellow square
+                        break;
+                    default:
+                        System.out.print(" " + cellValue + " ");
                 }
-                System.out.println("╣");
             }
+            System.out.println();
         }
-
-        // Print the bottom border of the matrix
-        System.out.print("   ");
-        for (int x = 0; x < this.width; x++) {
-            System.out.print("╚═══");
-        }
-        System.out.println("╝");
     }
-
-
 
 
 
