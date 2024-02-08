@@ -5,13 +5,17 @@ import java.util.Scanner;
 public class GameSystem {
 
     /**
-     *
-     * @return
+     *choose a random player to start a game
+     * @return byte id of the first player
      */
     public static byte randomStart(){
         return (byte) (Math.random() *((3 - 1) ));
     }
 
+    /**
+     * win condition for player 1;
+     * @return true if the game continue and false if the player 1 win
+     */
     public static boolean winPlayer1() {
         if ((GameBoard.matrice[Main.column2 - 1][Main.line2] == 0) || (GameBoard.matrice[Main.column2][Main.line2 - 1] == 0) ||
                 (GameBoard.matrice[Main.column2][Main.line2 + 1] == 0) || (GameBoard.matrice[Main.column2 + 1][Main.line2] == 0)) {
@@ -24,6 +28,10 @@ public class GameSystem {
             return false;
         }
     }
+    /**
+     * win condition for player 2;
+     * @return true if the game continue and false if the player 2 win
+     */
     public static boolean winPlayer2() {
         if ((GameBoard.matrice[Main.column1 - 1][Main.line1] == 0) || (GameBoard.matrice[Main.column1][Main.line1 - 1] == 0) ||
                 (GameBoard.matrice[Main.column1][Main.line1 + 1] == 0) || (GameBoard.matrice[Main.column1 + 1][Main.line1] == 0)) {
@@ -36,6 +44,10 @@ public class GameSystem {
         }
     }
 
+    /**
+     * the user can choose a pseudo between 2 and 10 character
+     * @return the pseudo choose by the user;
+     */
     public static String choosePseudo() {
         System.out.println("Choose a pseudo between 2 and 10 character");
         Scanner scannerpseudo = new Scanner(System.in); //Pseudo input
@@ -212,6 +224,10 @@ public class GameSystem {
         }
     }
 
+    /**
+     * Save scores in a txt file
+     * @param file name of the created file or incremented file
+     */
     public static void saveScores (String file){
         try (PrintWriter writer = new PrintWriter(new File(file))) {
             for (int i = 0; i < Main.pseudos.length; i++) {
@@ -223,12 +239,17 @@ public class GameSystem {
         }
     }
 
+    /**
+     * load the scores from the scores file
+     * @param file name of the scores
+     * @throws IOException
+     */
     public static void loadScores(String file) throws IOException {
         InputStream is = new FileInputStream(file);
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader buffer = new BufferedReader(isr);
 
-        String line = buffer.readLine();
+        String line;
             while ((line = buffer.readLine()) != null){
                 String[] tempScore = line.split(",");
                 String pseudo = tempScore[0];

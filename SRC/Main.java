@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,10 @@ public class Main {
     static  boolean existingPseudo = true;
 
     public static void main(String[] args) throws IOException {
-        GameSystem.loadScores("score.txt");
+        File testFile = new File("score.txt");
+        if (testFile.exists()) {
+            GameSystem.loadScores("score.txt");
+        }
         MainMenu.displayMainMenu();
 
     }

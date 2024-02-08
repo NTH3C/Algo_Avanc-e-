@@ -8,7 +8,7 @@ public class GameBoard {
     int height;
 
     /**
-     *
+     * constructor of the matrice with widht and height parameter's
      * @param matrice
      * @param widht
      * @param height
