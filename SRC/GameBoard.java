@@ -138,11 +138,12 @@ public class GameBoard {
                                     Main.column2--;
                                     matrice[Main.column2][Main.line2] = 4;
                                     Player = 0;
-                                    AudioPlayer.playAudio("sound/move.wav");
+                                    AudioPlayer.playAudio("sound/move.wav",250);
+                                    displayMatrice();
                                     destroy(Main.pseudo1);
                                 } else {
                                     System.out.println("This case is used or explosed");
-                                    AudioPlayer.playAudio("sound/collision.wav");
+                                    AudioPlayer.playAudio("sound/collision.wav",250);
                                 }
                                 break;
                             case "d":
@@ -152,11 +153,12 @@ public class GameBoard {
                                     Main.column2++;
                                     matrice[Main.column2][Main.line2] = 4;
                                     Player = 0;
-                                    AudioPlayer.playAudio("sound/move.wav");
+                                    AudioPlayer.playAudio("sound/move.wav",250);
+                                    displayMatrice();
                                     destroy(Main.pseudo1);
                                 } else {
                                     System.out.println("This case is used or explosed");
-                                    AudioPlayer.playAudio("sound/collision.wav");
+                                    AudioPlayer.playAudio("sound/collision.wav",250);
                                 }
                                 break;
                             case "z":
@@ -166,11 +168,12 @@ public class GameBoard {
                                     Main.line2--;
                                     matrice[Main.column2][Main.line2] = 4;
                                     Player = 0;
-                                    AudioPlayer.playAudio("sound/move.wav");
+                                    AudioPlayer.playAudio("sound/move.wav",250);
+                                    displayMatrice();
                                     destroy(Main.pseudo1);
                                 } else {
                                     System.out.println("This case is used or explosed");
-                                    AudioPlayer.playAudio("sound/collision.wav");
+                                    AudioPlayer.playAudio("sound/collision.wav",250);
                                 }
                                 break;
                             case "s":
@@ -180,16 +183,22 @@ public class GameBoard {
                                     Main.line2++;
                                     matrice[Main.column2][Main.line2] = 4;
                                     Player = 0;
-                                    AudioPlayer.playAudio("sound/move.wav");
+                                    AudioPlayer.playAudio("sound/move.wav",250);
+                                    displayMatrice();
                                     destroy(Main.pseudo1);
                                 } else {
                                     System.out.println("This case is used or explosed");
-                                    AudioPlayer.playAudio("sound/collision.wav");
+                                    AudioPlayer.playAudio("sound/collision.wav",250);
                                 }
+                                break;
+                            //use the konami code to reverse the map (Secret input)
+                            case "uuddlrlrba":
+                                EasterEgg.konamiCode();
+                                Player = 0;
                                 break;
                             default:
                                 System.out.println("Not this time Clément...");
-                                AudioPlayer.playAudio("sound/error.wav");
+                                AudioPlayer.playAudio("sound/error.wav",1000);
                                 break;
                         }
 
@@ -197,12 +206,13 @@ public class GameBoard {
                         System.out.println("Enter a VALID character !");
                     }
                 }else {
+                    GameSystem.saveScores("score.txt");
                     Main.isgame=false;
                 }
             }
-
+            //We don't know why even after checking a lot but the second player need to reverse matrice parameters, so we had to rewrite the code....
             else if (Player == 0) {
-                if ((GameSystem.winPlayer1()) && (GameSystem.winPlayer2())) {
+                if ((GameSystem.winPlayer2()) && (GameSystem.winPlayer1())) {
                     Scanner scanner = new Scanner(System.in);
                     try {
                         System.out.println(Main.pseudo2 + "'s Turn");
@@ -220,11 +230,12 @@ public class GameBoard {
                                     Main.column1--;
                                     matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
-                                    AudioPlayer.playAudio("sound/move.wav");
+                                    AudioPlayer.playAudio("sound/move.wav",250);
+                                    displayMatrice();
                                     destroy(Main.pseudo2);
                                 } else {
                                     System.out.println("This case is used or explosed");
-                                    AudioPlayer.playAudio("sound/collision.wav");
+                                    AudioPlayer.playAudio("sound/collision.wav",250);
                                 }
                                 break;
                             case "s":
@@ -234,11 +245,12 @@ public class GameBoard {
                                     Main.column1++;
                                     matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
-                                    AudioPlayer.playAudio("sound/move.wav");
+                                    AudioPlayer.playAudio("sound/move.wav",250);
+                                    displayMatrice();
                                     destroy(Main.pseudo2);
                                 } else {
                                     System.out.println("This case is used or explosed");
-                                    AudioPlayer.playAudio("sound/collision.wav");
+                                    AudioPlayer.playAudio("sound/collision.wav",250);
                                 }
                                 break;
                             case "q":
@@ -248,11 +260,12 @@ public class GameBoard {
                                     Main.line1--;
                                     matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
-                                    AudioPlayer.playAudio("sound/move.wav");
+                                    AudioPlayer.playAudio("sound/move.wav",250);
+                                    displayMatrice();
                                     destroy(Main.pseudo2);
                                 } else {
                                     System.out.println("This case is used or explosed");
-                                    AudioPlayer.playAudio("sound/collision.wav");
+                                    AudioPlayer.playAudio("sound/collision.wav",250);
                                 }
                                 break;
                             case "d":
@@ -262,23 +275,30 @@ public class GameBoard {
                                     Main.line1++;
                                     matrice[Main.line1][Main.column1] = 3;
                                     Player = 1;
-                                    AudioPlayer.playAudio("sound/move.wav");
+                                    AudioPlayer.playAudio("sound/move.wav",250);
+                                    displayMatrice();
                                     destroy(Main.pseudo2);
                                 } else {
                                     System.out.println("This case is used or explosed");
-                                    AudioPlayer.playAudio("sound/collision.wav");
+                                    AudioPlayer.playAudio("sound/collision.wav",250);
 
                                 }
                                 break;
+                            case "uuddlrlrba":
+                                //use the konami code to reverse the map (Secret input)
+                                EasterEgg.konamiCode();
+                                Player = 1;
+                                break;
                             default:
                                 System.out.println("Not this time Clément...");
-                                AudioPlayer.playAudio("sound/error.wav");
+                                AudioPlayer.playAudio("sound/error.wav",1000);
                                 break;
                         }
                     } catch (InputMismatchException e) {
                         System.out.println("Enter a VALID character !");
                     }
                 }else {
+                    GameSystem.saveScores("score.txt");
                     Main.isgame=false;
                 }
             }
@@ -298,48 +318,28 @@ public class GameBoard {
                     System.out.println("Enter the line you want to aim at :");
                     int line = scannerDestroy.nextInt();
                     if ((line >= 1) && (line <= 11) && (matrice[column][line] == 0)) {
-                        matrice[column][line] = 1;}
-                    AudioPlayer.playAudio("sound/explosion.wav");
+                        matrice[column][line] = 1;
+                        AudioPlayer.playAudio("sound/explosion.wav",500);
+                    }else {
+                        System.out.println("Not this time clément");
+                        AudioPlayer.playAudio("sound/error.wav",1000);
+                        destroy(pseudo);
+                    }
                 } catch (InputMismatchException e) {
                     System.out.println("Not this time clément");
+                    AudioPlayer.playAudio("sound/error.wav",1000);
                     destroy(pseudo);
-                    AudioPlayer.playAudio("sound/error.wav");
                 }
             }else {
                 System.out.println("Not this time clément");
+                AudioPlayer.playAudio("sound/error.wav",1000);
                 destroy(pseudo);
-                AudioPlayer.playAudio("sound/error.wav");
             }
         } catch (InputMismatchException e) {
             System.out.println("Not this time clément");
+            AudioPlayer.playAudio("sound/error.wav",1000);
             destroy(pseudo);
-            AudioPlayer.playAudio("sound/error.wav");
         }
-    }
-
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int[][] getMatrice() {
-        return matrice;
-    }
-
-    public void setMatrice(int[][] matrice) {
-        this.matrice = matrice;
     }
 
 }

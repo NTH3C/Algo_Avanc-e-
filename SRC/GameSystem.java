@@ -23,7 +23,7 @@ public class GameSystem {
         }
        else {
             System.out.println("Player 1 win");
-            AudioPlayer.playAudio("sound/Player_one_win.wav");
+            AudioPlayer.playAudio("sound/Player_one_win.wav",1000);
             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo1, 5);
             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo2, -2);
             return false;
@@ -39,7 +39,7 @@ public class GameSystem {
             return true;
         }else {
             System.out.println("Player 2 win");
-            AudioPlayer.playAudio("sound/Player_two_win.wav");
+            AudioPlayer.playAudio("sound/Player_two_win.wav",1000);
             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo2, 5);
             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo1, -2);
             return false;
@@ -143,15 +143,19 @@ public class GameSystem {
     }
 
     /**
-     * Print Scores to the user then ask user to do an input
+     * Print the 10 first scores according to the sorting wanted by the user then ask user to do an input
      * If 1 is press return ton main menu
      * If 2 is press sort scores from worst to best
      * If 3 is press sort scores from best to worst
      */
     public static void printPseudosAndScores() {
-        // Print the pseudos and scores
-        for (int i = 0; i < Main.pseudos.length; i++) {
+        // Print the 10 first pseudos and scores
+        for (int i = 0; i < Main.scores.length; i++) {
             System.out.println("Pseudo: " + Main.pseudos[i] + ", Score: " + Main.scores[i]);
+            //if i come to 9 we have 10 scores printed, so we ask i to take the value to end the for
+            if (i == 9){
+                i = Main.pseudos.length;
+            }
         }
         Scanner scanner = new Scanner(System.in);
         try {
