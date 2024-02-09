@@ -11,12 +11,12 @@ public class GameBoard {
     /**
      * constructor of the matrice with widht and height parameter's
      * @param matrice
-     * @param widht
+     * @param width
      * @param height
      */
-    public GameBoard(int[][] matrice, int widht, int height) {
+    public GameBoard(int[][] matrice, int width, int height) {
         this.matrice = matrice;
-        this.width = widht;
+        this.width = width;
         this.height = height;
     }
 
@@ -60,36 +60,37 @@ public class GameBoard {
      */
     public void displayMatrice() {
         // Print column numbers
-        System.out.print("  ");
         for (int x = 0; x < this.width; x++) {
-            if (x < 10)
-                System.out.print(x + "|");
+            if ((x < 10) && (x > 0))
+                System.out.print(" " + x + " |");
+            else if (x >=10)
+                System.out.print(" " + x + "|");
             else
-                System.out.print(x + "|");
+                System.out.print("| _ | " + x + " ");
         }
         System.out.println();
 
         for (int y = 0; y < this.height; y++) {
             // Print row number
             if (y < 10)
-                System.out.print(" " + y + " ");
+                System.out.print("| " + y + " ");
             else
-                System.out.print(y + " ");
+                System.out.print("|"+y + " ");
 
             for (int x = 0; x < this.width; x++) {
                 int cellValue = this.matrice[x][y];
                 switch (cellValue) {
                     case 0:
-                        System.out.print("\u001B[47m  \u001B[0m"); // White square
+                        System.out.print("\u001B[47m \u200E  |\u001B[0m"); // White square
                         break;
                     case 1:
-                        System.out.print("\u001B[41m  \u001B[0m"); // Red square
+                        System.out.print("\u001B[41m \u200E  |\u001B[0m"); // Red square
                         break;
                     case 3:
-                        System.out.print("\u001B[44m  \u001B[0m"); // Blue square
+                        System.out.print("\u001B[44m \u200E  |\u001B[0m"); // Blue square
                         break;
                     case 4:
-                        System.out.print("\u001B[43m  \u001B[0m"); // Yellow square
+                        System.out.print("\u001B[43m \u200E  |\u001B[0m"); // Yellow square
                         break;
                     default:
                         System.out.print(" " + cellValue + " ");

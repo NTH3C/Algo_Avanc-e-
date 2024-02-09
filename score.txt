@@ -1,4 +1,4 @@
-Sllappo,200
+Sllappo,205
 Bwalexius,-22
 Kramptax,56
 Noroi,-1
@@ -11,3 +11,4 @@ Lolilol,5
 Test,-2
 yellow,3
 blue,3
+Corrin,-2
