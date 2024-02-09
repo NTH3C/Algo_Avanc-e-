@@ -124,7 +124,7 @@ public class GameBoard {
                 if ((GameSystem.winPlayer1()) && (GameSystem.winPlayer2())) {
                     Scanner scanner = new Scanner(System.in);  // player move input
                     try {
-                        System.out.println(Main.pseudo2 + "'s Turn");
+                        System.out.println(Main.pseudo1 + "'s Turn");
                         System.out.println("You are the yellow player");
                         System.out.println("-z : move to top");
                         System.out.println("-d : move to right");
@@ -320,7 +320,15 @@ public class GameBoard {
                     int line = scannerDestroy.nextInt();
                     if ((line >= 1) && (line <= 11) && (matrice[column][line] == 0)) {
                         matrice[column][line] = 1;
-                        AudioPlayer.playAudio("sound/explosion.wav",500);
+                        if(Objects.equals(pseudo, "Trump")) {
+                            AudioPlayer.playAudio("sound/trump.wav", 500);
+                        } else if (Objects.equals(pseudo,"KimJongUn")) {
+                            AudioPlayer.playAudio("sound/kim.wav", 500);
+                        } else if (Objects.equals(pseudo,"DiddyKong")) {
+                            AudioPlayer.playAudio("sound/ouhouhouh.wav", 500);
+                        } else {
+                            AudioPlayer.playAudio("sound/explosion.wav", 500);
+                        }
                     }else {
                         System.out.println("Not this time clément");
                         AudioPlayer.playAudio("sound/error.wav",1000);
