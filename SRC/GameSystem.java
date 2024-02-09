@@ -22,7 +22,7 @@ public class GameSystem {
             return true;
         }
        else {
-            System.out.println("Player 1 win");
+            System.out.println(Main.pseudo2+" win");
             AudioPlayer.playAudio("sound/Player_one_win.wav",1000);
             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo1, 5);
             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo2, -2);
@@ -38,7 +38,7 @@ public class GameSystem {
                 (GameBoard.matrice[Main.column1][Main.line1 + 1] == 0) || (GameBoard.matrice[Main.column1 + 1][Main.line1] == 0)) {
             return true;
         }else {
-            System.out.println("Player 2 win");
+            System.out.println(Main.pseudo1 + " win");
             AudioPlayer.playAudio("sound/Player_two_win.wav",1000);
             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo2, 5);
             GameSystem.addOrUpdatePseudoScore(Main.pseudos, Main.scores, Main.pseudo1, -2);

@@ -12,3 +12,6 @@ Test,-2
 yellow,3
 blue,3
 Corrin,-2
+zer,5
+ras,3
+ezr,-2
