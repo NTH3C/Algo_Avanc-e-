@@ -82,16 +82,16 @@ public class GameBoard {
                 int cellValue = this.matrice[x][y];
                 switch (cellValue) {
                     case 0:
-                        System.out.print("\u001B[47m ◩ |\u001B[0m"); // White square
+                        System.out.print("\u001B[47m \u200E  |\u001B[0m"); // White square
                         break;
                     case 1:
-                        System.out.print("\u001B[41m □ |\u001B[0m"); // Red square
+                        System.out.print("\u001B[41m \u200E  |\u001B[0m"); // Red square
                         break;
                     case 3:
-                        System.out.print("\u001B[44m □ |\u001B[0m"); // Blue square
+                        System.out.print("\u001B[44m \u200E  |\u001B[0m"); // Blue square
                         break;
                     case 4:
-                        System.out.print("\u001B[43m □ |\u001B[0m"); // Yellow square
+                        System.out.print("\u001B[43m \u200E  |\u001B[0m"); // Yellow square
                         break;
                     default:
                         System.out.print(" " + cellValue + " ");
